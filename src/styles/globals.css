@@ -197,3 +197,48 @@
   line-height: 1.35;
   letter-spacing: -0.025px;
 }
+
+@theme {
+  --color-bg-pink: rgb(247, 232, 238);
+  --color-bg-blue: rgb(235, 244, 249);
+  --color-bg-green: rgb(233, 245, 235);
+  --color-bg-white: rgb(252, 252, 252);
+
+  --color-success-100: rgb(195, 228, 199);
+  --color-success-200: rgb(157, 210, 164);
+  --color-success-300: rgb(116, 193, 128);
+  --color-success-400: rgb(86, 180, 102);
+  --color-success-500: rgb(54, 167, 76);
+  --color-success-600: rgb(45, 153, 67);
+  --color-success-700: rgb(34, 135, 56);
+  --color-success-800: rgb(23, 118, 46);
+  --color-success-900: rgb(0, 87, 27);
+
+  --color-error-100: rgb(255, 201, 203);
+  --color-error-200: rgb(248, 146, 141);
+  --color-error-300: rgb(239, 102, 96);
+  --color-error-400: rgb(248, 62, 54);
+  --color-error-500: rgb(251, 37, 12);
+  --color-error-600: rgb(237, 17, 17);
+  --color-error-700: rgb(219, 0, 12);
+  --color-error-800: rgb(207, 0, 2);
+  --color-error-900: rgb(193, 0, 0);
+
+  --color-white-200: rgb(252, 252, 252);
+  --color-white-300: rgb(247, 247, 247);
+  --color-white-400: rgb(242, 242, 242);
+  --color-white-500: rgb(236, 236, 236);
+  --color-white-600: rgb(202, 202, 202);
+  --color-white-700: rgb(172, 172, 172);
+  --color-white-800: rgb(130, 130, 130);
+  --color-white-900: rgb(110, 110, 110);
+
+  --color-black-200: rgb(239, 239, 239);
+  --color-black-300: rgb(227, 227, 227);
+  --color-black-400: rgb(210, 210, 210);
+  --color-black-500: rgb(173, 173, 173);
+  --color-black-600: rgb(140, 140, 140);
+  --color-black-700: rgb(82, 82, 82);
+  --color-black-800: rgb(52, 52, 52);
+  --color-black-900: rgb(20, 20, 20);
+}
