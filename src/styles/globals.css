@@ -199,6 +199,9 @@
 }
 
 @theme {
+  --breakpoint-mo: 375px;
+  --breakpoint-pc: 1024px;
+
   --color-bg-pink: rgb(247, 232, 238);
   --color-bg-blue: rgb(235, 244, 249);
   --color-bg-green: rgb(233, 245, 235);
