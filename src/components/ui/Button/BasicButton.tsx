@@ -1,3 +1,4 @@
+import { cn } from "@/hooks/cn";
 import { cva, VariantProps } from "class-variance-authority";
 
 interface BasicButtonProps
@@ -38,10 +39,14 @@ const BasicButton = ({
   children,
   variant,
   size,
+  className,
   ...props
 }: BasicButtonProps) => {
   return (
-    <button {...props} className={basicButtonVariants({ variant, size })}>
+    <button
+      {...props}
+      className={cn(basicButtonVariants({ variant, size }), className)}
+    >
       {children}
     </button>
   );
