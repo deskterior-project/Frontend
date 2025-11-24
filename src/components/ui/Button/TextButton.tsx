@@ -1,3 +1,4 @@
+import { cn } from "@/hooks/cn";
 import { cva, VariantProps } from "class-variance-authority";
 
 interface TextButtonProps
@@ -21,9 +22,14 @@ const textButtonVariants = cva(
     },
   }
 );
-const TextButton = ({ children, size, ...props }: TextButtonProps) => {
+const TextButton = ({
+  children,
+  size,
+  className,
+  ...props
+}: TextButtonProps) => {
   return (
-    <button {...props} className={textButtonVariants({ size })}>
+    <button {...props} className={cn(textButtonVariants({ size }), className)}>
       {children}
     </button>
   );
