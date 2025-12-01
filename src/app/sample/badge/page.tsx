@@ -3,89 +3,36 @@
 import Badge from "@/components/ui/Badge/Badge";
 
 const Page = () => {
+  const variants = ["outline", "solid", "outline_pastel"] as const;
+  const colors = [
+    "black",
+    "success",
+    "error",
+    "bg-pink",
+    "bg-blue",
+    "bg-green",
+  ] as const;
+
   return (
     <div className="p-10 flex flex-col justify-center items-center gap-10">
       <div className="text-xl font-bold">Badge 샘플페이지</div>
-      <h1>pc</h1>
-      <div className="flex gap-6">
-        {/* 검 / Success / Error */}
 
-        <div className="flex gap-3">
-          <div className="flex flex-col gap-3">
-            <Badge color="black" variant="outline" size="pc" />
-            <Badge color="black" variant="solid" size="pc" />
-            <Badge color="black" variant="outline_pastel" size="pc" />
+      <div className="flex flex-col gap-6">
+        {variants.map((variant) => (
+          <div key={variant}>
+            <h2 className="mb-2 font-semibold">{variant}</h2>
+            <div className="flex flex-wrap gap-4">
+              {colors.map((color) => (
+                <Badge
+                  key={`${variant}-${color}`}
+                  variant={variant}
+                  color={color}
+                  label="badge"
+                />
+              ))}
+            </div>
           </div>
-          <div className="flex flex-col gap-3">
-            <Badge color="success" variant="outline" size="pc" />
-            <Badge color="success" variant="solid" size="pc" />
-            <Badge color="success" variant="outline_pastel" size="pc" />
-          </div>
-          <div className="flex flex-col gap-3">
-            <Badge color="error" variant="outline" size="pc" />
-            <Badge color="error" variant="solid" size="pc" />
-            <Badge color="error" variant="outline_pastel" size="pc" />
-          </div>
-        </div>
-        {/* bg-pink / bg-blue / bg-green */}
-        <div className="flex gap-3">
-          <div className="flex flex-col gap-3">
-            <Badge color="bg-pink" variant="outline" size="pc" />
-            <Badge color="bg-pink" variant="solid" size="pc" />
-            <Badge color="bg-pink" variant="outline_pastel" size="pc" />
-          </div>
-          <div className="flex flex-col gap-3">
-            <Badge color="bg-blue" variant="outline" size="pc" />
-            <Badge color="bg-blue" variant="solid" size="pc" />
-            <Badge color="bg-blue" variant="outline_pastel" size="pc" />
-          </div>
-          <div className="flex flex-col gap-3">
-            <Badge color="bg-green" variant="outline" size="pc" />
-            <Badge color="bg-green" variant="solid" size="pc" />
-            <Badge color="bg-green" variant="outline_pastel" size="pc" />
-          </div>
-        </div>
-      </div>
-      <h1>mobile</h1>
-      {/* 모바일 예시 */}
-      <div className="flex gap-6 mt-6">
-        {/* 검 / Success / Error */}
-        <div className="flex gap-3">
-          <div className="flex flex-col gap-3">
-            <Badge color="black" variant="outline" size="mobile" />
-            <Badge color="black" variant="solid" size="mobile" />
-            <Badge color="black" variant="outline_pastel" size="mobile" />
-          </div>
-          <div className="flex flex-col gap-3">
-            <Badge color="success" variant="outline" size="mobile" />
-            <Badge color="success" variant="solid" size="mobile" />
-            <Badge color="success" variant="outline_pastel" size="mobile" />
-          </div>
-          <div className="flex flex-col gap-3">
-            <Badge color="error" variant="outline" size="mobile" />
-            <Badge color="error" variant="solid" size="mobile" />
-            <Badge color="error" variant="outline_pastel" size="mobile" />
-          </div>
-        </div>
-
-        {/* bg-pink / bg-blue / bg-green */}
-        <div className="flex gap-3">
-          <div className="flex flex-col gap-3">
-            <Badge color="bg-pink" variant="outline" size="mobile" />
-            <Badge color="bg-pink" variant="solid" size="mobile" />
-            <Badge color="bg-pink" variant="outline_pastel" size="mobile" />
-          </div>
-          <div className="flex flex-col gap-3">
-            <Badge color="bg-blue" variant="outline" size="mobile" />
-            <Badge color="bg-blue" variant="solid" size="mobile" />
-            <Badge color="bg-blue" variant="outline_pastel" size="mobile" />
-          </div>
-          <div className="flex flex-col gap-3">
-            <Badge color="bg-green" variant="outline" size="mobile" />
-            <Badge color="bg-green" variant="solid" size="mobile" />
-            <Badge color="bg-green" variant="outline_pastel" size="mobile" />
-          </div>
-        </div>
+        ))}
       </div>
 
       <h2>하드코딩한 부분----------------------------------</h2>

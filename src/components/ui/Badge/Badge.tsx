@@ -1,179 +1,141 @@
 "use client";
 
-import { cva } from "class-variance-authority";
-import clsx from "clsx";
+import { cn } from "@/hooks/cn";
+import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 
-type ColorKey =
-  | "black"
-  | "success"
-  | "error"
-  | "bg-pink"
-  | "bg-blue"
-  | "bg-green";
-type BadgeVariant = "solid" | "outline" | "outline_pastel";
-type BadgeSize = "pc" | "mobile";
-
-interface BadgeProps {
+interface BadgeProps extends VariantProps<typeof badgeVariants> {
   label?: string;
-  variant?: BadgeVariant;
-  color?: ColorKey;
-  size?: BadgeSize;
   className?: string;
   onClick?: () => void;
 }
 
-const badgeStyles = cva("flex items-center justify-center", {
-  variants: {
-    variant: {
-      outline: "border",
-      solid: "border",
-      outline_pastel: "",
+const badgeVariants = cva(
+  "flex items-center justify-center px-2 py-1 pc:typo-pc-body-s400 mo:typo-mo-body-s400",
+  {
+    variants: {
+      variant: {
+        outline: "inset-ring-1",
+        solid: "",
+        outline_pastel: "",
+      },
+      color: {
+        black: "",
+        success: "",
+        error: "",
+        "bg-pink": "",
+        "bg-blue": "",
+        "bg-green": "",
+      },
     },
-    color: {
-      black: "",
-      success: "",
-      error: "",
-      "bg-pink": "",
-      "bg-blue": "",
-      "bg-green": "",
-    },
-    size: {
-      pc: "typo-pc-body-s400 w-[59px] h-[30px]",
-      mobile: "typo-mo-body-s400 w-[49px] h-[24px]",
-    },
-  },
-  compoundVariants: [
-    {
+    compoundVariants: [
+      {
+        color: "black",
+        variant: "outline",
+        className: "text-black-900 inset-ring-black-900",
+      },
+      {
+        color: "black",
+        variant: "solid",
+        className: "bg-black-900 text-white-200",
+      },
+      {
+        color: "black",
+        variant: "outline_pastel",
+        className: "text-black-900 bg-black-200",
+      },
+      {
+        color: "success",
+        variant: "outline",
+        className: "text-success-700 inset-ring-success-700",
+      },
+      {
+        color: "success",
+        variant: "solid",
+        className: "bg-success-700 text-white-200",
+      },
+      {
+        color: "success",
+        variant: "outline_pastel",
+        className: "text-success-700 bg-success-100",
+      },
+      {
+        color: "error",
+        variant: "outline",
+        className: "text-error-600 inset-ring-error-600",
+      },
+      {
+        color: "error",
+        variant: "solid",
+        className: "bg-error-600 text-white-200",
+      },
+      {
+        color: "error",
+        variant: "outline_pastel",
+        className: "text-error-600 bg-error-100",
+      },
+      {
+        color: "bg-pink",
+        variant: "outline",
+        className: "text-black-900 inset-ring-black-900 bg-bg-pink",
+      },
+      {
+        color: "bg-pink",
+        variant: "solid",
+        className: "bg-black-900 text-bg-pink",
+      },
+      {
+        color: "bg-pink",
+        variant: "outline_pastel",
+        className: "text-black-900 bg-bg-pink",
+      },
+      {
+        color: "bg-blue",
+        variant: "outline",
+        className: "text-black-900 inset-ring-black-900 bg-bg-blue",
+      },
+      {
+        color: "bg-blue",
+        variant: "solid",
+        className: "bg-black-900 text-bg-blue",
+      },
+      {
+        color: "bg-blue",
+        variant: "outline_pastel",
+        className: "text-black-900 bg-bg-blue",
+      },
+      {
+        color: "bg-green",
+        variant: "outline",
+        className: "text-black-900 inset-ring-black-900 bg-bg-green",
+      },
+      {
+        color: "bg-green",
+        variant: "solid",
+        className: "bg-black-900 text-bg-green",
+      },
+      {
+        color: "bg-green",
+        variant: "outline_pastel",
+        className: "text-black-900 bg-bg-green",
+      },
+    ],
+    defaultVariants: {
+      variant: "solid",
       color: "black",
-      variant: "outline",
-      className:
-        "[color:var(--color-black-900)] [border-color:var(--color-black-900)]",
     },
-    {
-      color: "black",
-      variant: "solid",
-      className:
-        "[background-color:var(--color-black-900)] [color:var(--color-white-200)]",
-    },
-    {
-      color: "black",
-      variant: "outline_pastel",
-      className:
-        "[color:var(--color-black-900)] [background-color:var(--color-black-200)]",
-    },
-    {
-      color: "success",
-      variant: "outline",
-      className:
-        "[color:var(--color-success-700)] [border-color:var(--color-success-700)]",
-    },
-    {
-      color: "success",
-      variant: "solid",
-      className:
-        "[background-color:var(--color-success-700)] [color:var(--color-white-200)] [border-color:var(--color-black-900)]",
-    },
-    {
-      color: "success",
-      variant: "outline_pastel",
-      className:
-        "[color:var(--color-success-700)] [background-color:var(--color-success-100)] [border-color:var(--color-success-700)]",
-    },
-    {
-      color: "error",
-      variant: "outline",
-      className:
-        "[color:var(--color-error-600)] [border-color:var(--color-error-600)]",
-    },
-    {
-      color: "error",
-      variant: "solid",
-      className:
-        "[background-color:var(--color-error-600)] [color:var(--color-white-200)]",
-    },
-    {
-      color: "error",
-      variant: "outline_pastel",
-      className:
-        "[color:var(--color-error-600)] [background-color:var(--color-error-100)] [border-color:var(--color-error-600)]",
-    },
-    {
-      color: "bg-pink",
-      variant: "outline",
-      className:
-        "[color:var(--color-black-900)] [background-color:var(--color-bg-pink)] [border-color:var(--color-black-900)]",
-    },
-    {
-      color: "bg-pink",
-      variant: "solid",
-      className:
-        "[color:var(--color-bg-pink)] [background-color:var(--color-black-900)]  [border-color:var(--color-black-900)]",
-    },
-    {
-      color: "bg-pink",
-      variant: "outline_pastel",
-      className:
-        "[color:var(--color-black-900)] [background-color:var(--color-bg-pink)] [border-color:var(--color-bg-pink)]",
-    },
-    {
-      color: "bg-blue",
-      variant: "outline",
-      className:
-        "[color:var(--color-black-900)] [background-color:var(--color-bg-blue)] [border-color:var(--color-black-900)]",
-    },
-    {
-      color: "bg-blue",
-      variant: "solid",
-      className:
-        "[color:var(--color-bg-blue)] [background-color:var(--color-black-900)] [border-color:var(--color-black-900)]",
-    },
-    {
-      color: "bg-blue",
-      variant: "outline_pastel",
-      className:
-        "[color:var(--color-black-900)] [background-color:var(--color-bg-blue)] [border-color:var(--color-bg-blue)]",
-    },
-    {
-      color: "bg-green",
-      variant: "outline",
-      className:
-        "[color:var(--color-black-900)] [background-color:var(--color-bg-green)] [border-color:var(--color-black-900)]",
-    },
-    {
-      color: "bg-green",
-      variant: "solid",
-      className:
-        "[color:var(--color-bg-green)] [background-color:var(--color-black-900)] [border-color:var(--color-black-900)]",
-    },
-    {
-      color: "bg-green",
-      variant: "outline_pastel",
-      className:
-        "[color:var(--color-black-900)] [background-color:var(--color-bg-green)] [border-color:var(--color-bg-green)]",
-    },
-  ],
-  defaultVariants: {
-    variant: "solid",
-    color: "black",
-    size: "pc",
-  },
-});
+  }
+);
 
 const Badge: React.FC<BadgeProps> = ({
-  label = "badge",
-  variant = "solid",
-  color = "black",
-  size = "pc",
-  className = "",
-  onClick,
+  label,
+  variant,
+  color,
+
+  className,
 }) => {
   return (
-    <span
-      className={clsx(badgeStyles({ variant, color, size }), className)}
-      onClick={onClick}
-      role={onClick ? "button" : undefined}
-    >
+    <span className={cn(badgeVariants({ variant, color }), className)}>
       {label}
     </span>
   );
