@@ -65,7 +65,7 @@ interface RadioButtonProps
     React.InputHTMLAttributes<HTMLInputElement>,
     "size" | "checked" | "disabled"
   > {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   value: string;
   size?: VariantProps<typeof radioButtonVariants>["size"];
   checked?: boolean;
