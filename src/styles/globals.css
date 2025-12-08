@@ -1,201 +1,229 @@
 @import "tailwindcss";
 
 @utility typo-pc-heading-l900 {
+  font-family: "SUIT";
   font-weight: 900;
   font-size: 56px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 @utility typo-pc-heading-m900 {
+  font-family: "SUIT";
   font-weight: 900;
   font-size: 48px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 @utility typo-pc-heading-s900 {
+  font-family: "SUIT";
   font-weight: 900;
   font-size: 40px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 /* ---------- PC / Title ---------- */
 @utility typo-pc-title-xl700 {
+  font-family: "SUIT";
   font-weight: 700;
   font-size: 36px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-pc-title-l700 {
+  font-family: "SUIT";
   font-weight: 700;
   font-size: 32px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-pc-title-m700 {
+  font-family: "SUIT";
   font-weight: 700;
   font-size: 28px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-pc-title-s700 {
+  font-family: "SUIT";
   font-weight: 700;
   font-size: 24px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-pc-title-xs700 {
+  font-family: "SUIT";
   font-weight: 700;
   font-size: 20px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 /* ---------- PC / Body ---------- */
 @utility typo-pc-body-l500 {
+  font-family: "SUIT";
   font-weight: 500;
   font-size: 20px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-pc-body-l400 {
+  font-family: "SUIT";
   font-weight: 400;
   font-size: 20px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-pc-body-m500 {
+  font-family: "SUIT";
   font-weight: 500;
   font-size: 18px;
   line-height: 1.36;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-pc-body-m400 {
+  font-family: "SUIT";
   font-weight: 400;
   font-size: 18px;
   line-height: 1.36;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-pc-body-s500 {
+  font-family: "SUIT";
   font-weight: 500;
   font-size: 16px;
   line-height: 1.33;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-pc-body-s400 {
+  font-family: "SUIT";
   font-weight: 400;
   font-size: 16px;
   line-height: 1.33;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 /* ---------- Mobile / Heading ---------- */
 @utility typo-mo-heading-l900 {
+  font-family: "SUIT";
   font-weight: 900;
   font-size: 32px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-mo-heading-m900 {
+  font-family: "SUIT";
   font-weight: 900;
   font-size: 30px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-mo-heading-s900 {
+  font-family: "SUIT";
   font-weight: 900;
   font-size: 28px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 /* ---------- Mobile / Title ---------- */
 @utility typo-mo-title-xl700 {
+  font-family: "SUIT";
   font-weight: 700;
   font-size: 24px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-mo-title-l700 {
+  font-family: "SUIT";
   font-weight: 700;
   font-size: 20px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-mo-title-m700 {
+  font-family: "SUIT";
   font-weight: 700;
   font-size: 18px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-mo-title-s700 {
+  font-family: "SUIT";
   font-weight: 700;
   font-size: 16px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-mo-title-xs700 {
+  font-family: "SUIT";
   font-weight: 700;
   font-size: 14px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 /* ---------- Mobile / Body ---------- */
 @utility typo-mo-body-l500 {
+  font-family: "SUIT";
   font-weight: 500;
   font-size: 16px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-mo-body-l400 {
+  font-family: "SUIT";
   font-weight: 400;
   font-size: 16px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-mo-body-m500 {
+  font-family: "SUIT";
   font-weight: 500;
   font-size: 14px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-mo-body-m400 {
+  font-family: "SUIT";
   font-weight: 400;
   font-size: 14px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-mo-body-s500 {
+  font-family: "SUIT";
   font-weight: 500;
   font-size: 12px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @utility typo-mo-body-s400 {
+  font-family: "SUIT";
   font-weight: 400;
   font-size: 12px;
   line-height: 1.35;
-  letter-spacing: -0.025px;
+  letter-spacing: -0.025em;
 }
 
 @theme {
@@ -244,4 +272,10 @@
   --color-black-700: rgb(82, 82, 82);
   --color-black-800: rgb(52, 52, 52);
   --color-black-900: rgb(20, 20, 20);
+}
+
+@layer utilities {
+  .inset-ring-b-1 {
+    box-shadow: inset 0 -1px 0 0 var(--tw-shadow-color);
+  }
 }
