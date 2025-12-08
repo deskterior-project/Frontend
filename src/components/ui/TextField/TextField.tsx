@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { default as DismissCircle } from "@/assets/dismiss-circle-regular.svg";
+import DismissCircle from "@/assets/dismiss-circle-regular.svg";
 import { cva } from "class-variance-authority";
 
 interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
