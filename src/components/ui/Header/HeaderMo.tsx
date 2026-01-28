@@ -53,7 +53,7 @@ const HeaderMo = ({
     return (
       <header
         className={cn(
-          "pc:hidden w-full h-14 px-6 flex items-center justify-start fixed top-11 left-0 right-0 z-10",
+          "pc:hidden w-full h-14 px-6 flex items-center justify-start fixed top-0 left-0 right-0 z-10",
           className,
         )}
       >
@@ -65,7 +65,7 @@ const HeaderMo = ({
   return (
     <header
       className={cn(
-        "pc:hidden w-full h-14 px-6 flex items-center fixed top-11 left-0 right-0 z-10",
+        "pc:hidden w-full h-14 px-6 flex items-center fixed top-0 left-0 right-0 z-10",
         rightContent ? "justify-between gap-2" : "justify-start",
         className,
       )}
