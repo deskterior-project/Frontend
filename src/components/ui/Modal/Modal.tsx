@@ -1,6 +1,5 @@
 import { cn } from "@/hooks/cn";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { Dialog } from "radix-ui";
+import { Dialog, VisuallyHidden } from "radix-ui";
 
 interface ModalProps {
   open: boolean;
@@ -33,10 +32,10 @@ const Modal = ({
             className,
           )}
         >
-          <VisuallyHidden>
+          <VisuallyHidden.Root>
             <Dialog.Title />
             <Dialog.Description />
-          </VisuallyHidden>
+          </VisuallyHidden.Root>
           {children}
         </Dialog.Content>
       </Dialog.Portal>
