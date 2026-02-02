@@ -1,3 +1,4 @@
+import AlertModal from "@/components/ui/Modal/AlertModal/AlertModal";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -28,6 +29,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <AlertModal />
       </body>
     </html>
   );
