@@ -15,6 +15,7 @@
     "axios": "^1.12.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "deskterior-fe": "link:",
     "next": "15.5.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -25,6 +26,9 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@storybook/addon-a11y": "^10.1.4",
+    "@storybook/addon-docs": "^10.1.4",
+    "@storybook/nextjs": "^10.1.4",
     "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
@@ -32,12 +36,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.6",
-    "tailwindcss": "^4.1.17",
-    "typescript": "^5",
+    "eslint-plugin-storybook": "^10.1.4",
     "storybook": "^10.1.4",
-    "@storybook/nextjs": "^10.1.4",
-    "@storybook/addon-a11y": "^10.1.4",
-    "@storybook/addon-docs": "^10.1.4",
-    "eslint-plugin-storybook": "^10.1.4"
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5"
   }
 }

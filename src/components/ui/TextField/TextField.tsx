@@ -8,9 +8,10 @@ interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string;
   label?: string;
   helperText?: string;
-  value: string;
   state?: "default" | "success" | "error" | "disabled" | "complete";
   placeholder?: string;
+  value?: string;
+  setValue: (value: string) => void;
 }
 
 const labelVariants = cva("pc:typo-pc-title-xs700 mo:typo-mo-title-s700", {
@@ -61,7 +62,7 @@ const inputVariants = cva(
     defaultVariants: {
       state: "default",
     },
-  }
+  },
 );
 
 const dismissCircleVariants = cva("cursor-pointer pc:size-6 mo:size-5", {
@@ -94,19 +95,26 @@ const helperTextVariants = cva(
     defaultVariants: {
       state: "default",
     },
-  }
+  },
 );
 
 export default function TextField({
   id,
-  label = "label",
-  helperText = "helper text",
-  placeholder = "input text",
+  label,
+  helperText,
+  placeholder,
   state = "default",
+  value,
+  setValue,
+  onKeyDown,
 }: TextFieldProps) {
   const isDisabled = state === "disabled";
   const [focused, setFocused] = useState(false);
   const finalState = isDisabled ? "disabled" : focused ? "focused" : state;
+
+  const handleClear = () => {
+    setValue("");
+  };
 
   return (
     <div className="flex flex-col gap-2 w-full">
@@ -119,15 +127,20 @@ export default function TextField({
       <div className={inputWrapperVariants({ state: finalState })}>
         <input
           id={id}
+          autoComplete="off"
           type="text"
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           disabled={isDisabled}
           placeholder={placeholder}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={onKeyDown}
           className={inputVariants({ state: finalState })}
         />
         <DismissCircle
           className={dismissCircleVariants({ state: finalState })}
+          onClick={handleClear}
         />
       </div>
 
