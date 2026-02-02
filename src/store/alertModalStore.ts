@@ -3,7 +3,7 @@ import { create } from "zustand";
 
 interface ModalAction {
   label: ReactNode;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "success" | "error";
   onClick?: () => void;
 }
 
