@@ -13,75 +13,74 @@ import { MouseEvent, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 const tabs = [
-  {
-    id: "like",
-    title: "좋아요 표시한 글",
-    icon: <Heart className="size-4" />,
-    activeIcon: <FillHeart className="size-4" />,
-  },
-  {
-    id: "my",
-    title: "내가 쓴 글",
-    icon: <TextEdit className="size-4" />,
-    activeIcon: <FillTextEdit className="size-4" />,
-  },
+    {
+        id: "like",
+        title: "좋아요 표시한 글",
+        icon: <Heart className="size-4" />,
+        activeIcon: <FillHeart className="size-4" />,
+    },
+    {
+        id: "my",
+        title: "내가 쓴 글",
+        icon: <TextEdit className="size-4" />,
+        activeIcon: <FillTextEdit className="size-4" />,
+    },
 ];
 
 const MyPage = () => {
-  const searchParams = useSearchParams();
-  const url = searchParams.get("posts");
-  const router = useRouter();
+    const searchParams = useSearchParams();
+    const url = searchParams.get("posts");
+    const router = useRouter();
 
-  const [currentTab, setCurrentTab] = useState<string | null>(url || "like");
+    const [currentTab, setCurrentTab] = useState<string | null>(url || "like");
 
-  const handleTabClick = (
-    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
-    id: string,
-  ) => {
-    e.preventDefault();
-    setCurrentTab(id);
-    router.push(`/my-page?posts=${id}`);
-  };
+    const handleTabClick = (
+        e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
+        id: string
+    ) => {
+        e.preventDefault();
+        setCurrentTab(id);
+        router.push(`/my-page?posts=${id}`);
+    };
 
-  return (
-    <main className="px-6 pt-17 flex flex-col gap-6">
-      <HeaderMo title="마이페이지" />
-      <section className="px-4 py-5 pc:px-8 pc:py-8 flex flex-col gap-4 pc:flex pc:flex-row pc:justify-between pc:items-center bg-white inset-ring-1 inset-ring-black-900">
-        <Profile />
-        <div className="flex gap-3 w-full pc:w-fit items-center justify-center">
-          <BasicButton
-            variant="secondary"
-            size="small"
-            href={"/my-page/profile-edit"}
-          >
-            프로필 수정
-            <Edit className="size-4" />
-          </BasicButton>
-          <BasicButton variant="tertiary" size="small">
-            로그아웃
-            <Logout className="size-4" />
-          </BasicButton>
-        </div>
-      </section>
-      <section className="flex flex-col gap-4">
-        <div className="flex gap-3">
-          {tabs.map((tab) => (
-            <TabMenu
-              key={tab.id}
-              active={currentTab === tab.id}
-              id={tab.id}
-              onClick={(e) => handleTabClick(e, tab.id)}
-              className="group"
-            >
-              {currentTab === tab.id ? tab.activeIcon : tab.icon}
+    return (
+        <main className="pc:pt-28 pc:gap-15 flex h-screen w-screen flex-col items-center gap-6 px-6 pt-17">
+            <HeaderMo title="마이페이지" />
+            <section className="pc:max-w-300 pc:px-8 pc:py-8 pc:flex pc:flex-row pc:justify-between pc:items-center inset-ring-black-900 flex w-full flex-col gap-4 bg-white px-4 py-5 inset-ring-1">
+                <Profile />
+                <div className="pc:w-fit flex w-full items-center justify-center gap-3">
+                    <BasicButton
+                        variant="secondary"
+                        size="small"
+                        href={"/my-page/profile-edit"}
+                    >
+                        프로필 수정
+                        <Edit className="size-4" />
+                    </BasicButton>
+                    <BasicButton variant="tertiary" size="small">
+                        로그아웃
+                        <Logout className="size-4" />
+                    </BasicButton>
+                </div>
+            </section>
+            <section className="pc:max-w-300 flex w-full flex-col items-start gap-4">
+                <div className="pc:gap-4 flex gap-3">
+                    {tabs.map((tab) => (
+                        <TabMenu
+                            key={tab.id}
+                            active={currentTab === tab.id}
+                            id={tab.id}
+                            onClick={(e) => handleTabClick(e, tab.id)}
+                        >
+                            {currentTab === tab.id ? tab.activeIcon : tab.icon}
 
-              {tab.title}
-            </TabMenu>
-          ))}
-        </div>
-      </section>
-    </main>
-  );
+                            {tab.title}
+                        </TabMenu>
+                    ))}
+                </div>
+            </section>
+        </main>
+    );
 };
 
 export default MyPage;
