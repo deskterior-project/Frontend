@@ -27,6 +27,13 @@ const tabs = [
     },
 ];
 
+const userInfo = {
+    profileImageUrl: "/image.png",
+    nickname: "nickname",
+    following: 999,
+    followers: 999,
+};
+
 const MyPage = () => {
     const searchParams = useSearchParams();
     const url = searchParams.get("posts");
@@ -47,7 +54,7 @@ const MyPage = () => {
         <main className="pc:pt-28 pc:gap-15 flex h-screen w-screen flex-col items-center gap-6 px-6 pt-17">
             <HeaderMo title="마이페이지" />
             <section className="pc:max-w-300 pc:px-8 pc:py-8 pc:flex pc:flex-row pc:justify-between pc:items-center inset-ring-black-900 flex w-full flex-col gap-4 bg-white px-4 py-5 inset-ring-1">
-                <Profile />
+                <Profile isMe userInfo={userInfo} />
                 <div className="pc:w-fit flex w-full items-center justify-center gap-3">
                     <BasicButton
                         variant="secondary"
