@@ -12,6 +12,10 @@ import CodeIcon from "@/assets/code-block-regular.svg";
 import CodeFilledIcon from "@/assets/code-block-filled.svg";
 import ChartIcon from "@/assets/chart-multiple-regular.svg";
 import ChartFilledIcon from "@/assets/chart-multifple-filled.svg";
+import LightBulbIcon from "@/assets/lightbulb-regular.svg";
+import LightBulbFilledIcon from "@/assets/lightbulb-filled.svg";
+import StarIcon from "@/assets/star-regular.svg";
+import StarFilledIcon from "@/assets/star-filled.svg";
 import clsx from "clsx";
 
 const CATEGORIES = [
@@ -20,6 +24,12 @@ const CATEGORIES = [
   { name: "디자이너", defaultIcon: DesignIcon, activeIcon: DesignFilledIcon },
   { name: "개발자", defaultIcon: CodeIcon, activeIcon: CodeFilledIcon },
   { name: "마케터", defaultIcon: ChartIcon, activeIcon: ChartFilledIcon },
+  {
+    name: "기획자",
+    defaultIcon: LightBulbIcon,
+    activeIcon: LightBulbFilledIcon,
+  },
+  { name: "그외 직업군", defaultIcon: StarIcon, activeIcon: StarFilledIcon },
 ];
 
 interface CategoryBarProps {
@@ -45,9 +55,9 @@ const CategoryBar = ({
               key={category.name}
               onClick={() => onSelect(category.name)}
               className={clsx(
-                "flex shrink-0 items-center inset-ring-1 bg-white-200 px-2 py-1 pc:px-4 pc:py-2 cursor-pointer",
+                "flex shrink-0 items-center justify-center inset-ring-1 bg-white-200 px-2 py-1 pc:py-2 pc:w-[161px] cursor-pointer",
                 "typo-mo-body-s500 pc:typo-pc-body-s500 text-black-800 pc:text-black-900",
-                isSelected && "bg-white-500"
+                isSelected && "bg-white-500",
               )}
             >
               <Icon className="size-5 pc:size-5 mr-1" />

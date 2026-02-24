@@ -21,16 +21,17 @@ export default function PostCard({
   title,
   size = "default",
 }: PostCardProps) {
-  const imageSizeClasses =
-    size === "long" ? "h-[230px] pc:h-[563px]" : "h-[108px] pc:h-[264px]";
+  const aspectClass =
+    size === "long"
+      ? "aspect-[144/230] pc:aspect-[352/563]"
+      : "aspect-[144/108] pc:aspect-[352/264]";
+
   return (
-    <div className="flex flex-col gap-2 inset-ring-1 px-2 py-3 pc:px-4 pc:py-5 max-w-40 pc:max-w-96">
+    <div className="flex flex-col gap-2 inset-ring-1 px-2 py-3 pc:px-4 pc:py-5 w-full max-w-40 pc:max-w-96">
       <span className="truncate typo-mo-body-s400 pc:typo-pc-body-s400">
         {title}
       </span>
-      <div
-        className={`relative overflow-hidden w-36 pc:w-[352px] pc:h-[264px] h-[108px] ${imageSizeClasses}`}
-      >
+      <div className={`relative overflow-hidden w-full ${aspectClass}`}>
         <Image
           src={thumbnail}
           alt="post thumbnail"
