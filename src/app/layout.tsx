@@ -1,20 +1,25 @@
+import { suit } from "@/assets/fonts/fonts";
+import AlertModal from "@/components/ui/Modal/AlertModal/AlertModal";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "De:Foco_",
   description: "데스크테리어 & 뽀모도로",
+  icons: {
+    icon: [
+      {
+        media: "(prefers-color-scheme: light)",
+        url: "/favicon-light.png",
+        type: "image/png",
+      },
+      {
+        media: "(prefers-color-scheme: dark)",
+        url: "/favicon-dark.png",
+        type: "image/png",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -23,11 +28,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="ko" className={suit.variable}>
+      <body className={suit.className}>
         {children}
+        <AlertModal />
       </body>
     </html>
   );

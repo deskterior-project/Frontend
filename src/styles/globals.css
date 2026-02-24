@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 @utility typo-pc-heading-l900 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 900;
   font-size: 56px;
   line-height: 1.35;
   letter-spacing: -0.025em;
 }
 @utility typo-pc-heading-m900 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 900;
   font-size: 48px;
   line-height: 1.35;
   letter-spacing: -0.025em;
 }
 @utility typo-pc-heading-s900 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 900;
   font-size: 40px;
   line-height: 1.35;
@@ -23,7 +23,7 @@
 }
 /* ---------- PC / Title ---------- */
 @utility typo-pc-title-xl700 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 700;
   font-size: 36px;
   line-height: 1.35;
@@ -31,7 +31,7 @@
 }
 
 @utility typo-pc-title-l700 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 700;
   font-size: 32px;
   line-height: 1.35;
@@ -39,7 +39,7 @@
 }
 
 @utility typo-pc-title-m700 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 700;
   font-size: 28px;
   line-height: 1.35;
@@ -47,7 +47,7 @@
 }
 
 @utility typo-pc-title-s700 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 700;
   font-size: 24px;
   line-height: 1.35;
@@ -55,7 +55,7 @@
 }
 
 @utility typo-pc-title-xs700 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 1.35;
@@ -64,7 +64,7 @@
 
 /* ---------- PC / Body ---------- */
 @utility typo-pc-body-l500 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.35;
@@ -72,7 +72,7 @@
 }
 
 @utility typo-pc-body-l400 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 1.35;
@@ -80,7 +80,7 @@
 }
 
 @utility typo-pc-body-m500 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.36;
@@ -88,7 +88,7 @@
 }
 
 @utility typo-pc-body-m400 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.36;
@@ -96,7 +96,7 @@
 }
 
 @utility typo-pc-body-s500 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.33;
@@ -104,7 +104,7 @@
 }
 
 @utility typo-pc-body-s400 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.33;
@@ -113,7 +113,7 @@
 
 /* ---------- Mobile / Heading ---------- */
 @utility typo-mo-heading-l900 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 900;
   font-size: 32px;
   line-height: 1.35;
@@ -121,7 +121,7 @@
 }
 
 @utility typo-mo-heading-m900 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 900;
   font-size: 30px;
   line-height: 1.35;
@@ -129,7 +129,7 @@
 }
 
 @utility typo-mo-heading-s900 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 900;
   font-size: 28px;
   line-height: 1.35;
@@ -138,7 +138,7 @@
 
 /* ---------- Mobile / Title ---------- */
 @utility typo-mo-title-xl700 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 700;
   font-size: 24px;
   line-height: 1.35;
@@ -146,7 +146,7 @@
 }
 
 @utility typo-mo-title-l700 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 1.35;
@@ -154,7 +154,7 @@
 }
 
 @utility typo-mo-title-m700 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 700;
   font-size: 18px;
   line-height: 1.35;
@@ -162,7 +162,7 @@
 }
 
 @utility typo-mo-title-s700 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 1.35;
@@ -170,7 +170,7 @@
 }
 
 @utility typo-mo-title-xs700 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 1.35;
@@ -179,7 +179,7 @@
 
 /* ---------- Mobile / Body ---------- */
 @utility typo-mo-body-l500 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.35;
@@ -187,7 +187,7 @@
 }
 
 @utility typo-mo-body-l400 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.35;
@@ -195,7 +195,7 @@
 }
 
 @utility typo-mo-body-m500 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.35;
@@ -203,7 +203,7 @@
 }
 
 @utility typo-mo-body-m400 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.35;
@@ -211,7 +211,7 @@
 }
 
 @utility typo-mo-body-s500 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.35;
@@ -219,7 +219,7 @@
 }
 
 @utility typo-mo-body-s400 {
-  font-family: "SUIT";
+  font-family: var(--font-suit), sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.35;

@@ -1,7 +1,7 @@
 "use client";
 
 import ChevronLeftIcon from "@/assets/chevron-left-regular.svg";
-import logo from "@/assets/logo-typography.png";
+import logo from "@/assets/logos/logo-typography.png";
 import { cn } from "@/hooks/cn";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -54,7 +54,7 @@ const HeaderMo = ({
       <header
         className={cn(
           "pc:hidden w-full h-14 px-6 flex items-center justify-start fixed top-0 left-0 right-0 z-10",
-          className,
+          className
         )}
       >
         <Image src={logo} alt="logo" width={128} height={35} priority />
@@ -67,7 +67,7 @@ const HeaderMo = ({
       className={cn(
         "pc:hidden w-full h-14 px-6 flex items-center fixed top-0 left-0 right-0 z-10",
         rightContent ? "justify-between gap-2" : "justify-start",
-        className,
+        className
       )}
     >
       <div className="flex items-center gap-2 w-full">

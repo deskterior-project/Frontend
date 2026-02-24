@@ -2,7 +2,8 @@ import { cn } from "@/hooks/cn";
 import { cva, VariantProps } from "class-variance-authority";
 
 interface BasicButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof basicButtonVariants> {
   children: React.ReactNode;
 }
@@ -18,6 +19,10 @@ const basicButtonVariants = cva(
           "bg-white-200 inset-ring-black-900 inset-ring-1 hover:bg-white-500 active:bg-white-500 disabled:bg-white-500 disabled:inset-ring-black-400 text-black-900 hover:text-black-800 active:text-black-800 disabled:text-black-400 disabled:cursor-not-allowed",
         tertiary:
           "bg-black-200 hover:bg-black-400 active:bg-black-400 disabled:bg-black-300 text-black-900 hover:text-black-800 active:text-black-800 disabled:text-black-500 disabled:cursor-not-allowed",
+        success:
+          "bg-success-700 hover:bg-success-600 active:bg-success-600 disabled:bg-success-400 text-white-200 hover:text-white-500 active:text-white-500 disabled:text-white-500 disabled:cursor-not-allowed",
+        error:
+          "bg-error-600 hover:bg-error-400 active:bg-error-400 disabled:bg-error-100 text-white-200 hover:text-white-500 active:text-white-500 disabled:text-white-500 disabled:cursor-not-allowed",
       },
       size: {
         large:
@@ -32,7 +37,7 @@ const basicButtonVariants = cva(
       variant: "primary",
       size: "large",
     },
-  }
+  },
 );
 
 const BasicButton = ({

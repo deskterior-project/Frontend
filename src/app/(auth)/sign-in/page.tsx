@@ -1,5 +1,5 @@
 "use client";
-import logoImage from "@/assets/logo-primary-main.png";
+import logoImage from "@/assets/logos/logo-primary-main.png";
 import SocialAuthSection from "@/components/section/sign-in/SocialAuthSection";
 import HeaderMo from "@/components/ui/Header/HeaderMo";
 import SignUpModal from "@/components/ui/Modal/SignUpModal/SignUpModal";
