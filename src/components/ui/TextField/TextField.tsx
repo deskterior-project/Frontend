@@ -5,12 +5,15 @@ import DismissCircle from "@/assets/dismiss-circle-regular.svg";
 import { cva } from "class-variance-authority";
 
 interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  id: string;
+  id?: string;
   label?: string;
   helperText?: string;
-  value: string;
   state?: "default" | "success" | "error" | "disabled" | "complete";
   placeholder?: string;
+  value: string;
+  setValue: (value: string) => void;
+  onKeyDown: React.KeyboardEventHandler<HTMLInputElement>;
+  onFocus?: () => void;
 }
 
 const labelVariants = cva("pc:typo-pc-title-xs700 mo:typo-mo-title-s700", {
@@ -29,21 +32,24 @@ const labelVariants = cva("pc:typo-pc-title-xs700 mo:typo-mo-title-s700", {
   },
 });
 
-const inputWrapperVariants = cva("inset-ring-1 flex items-center py-2 px-3", {
-  variants: {
-    state: {
-      default: "inset-ring-black-600 bg-white-200",
-      focused: "inset-ring-black-900 bg-white-200",
-      success: "inset-ring-success-700 bg-white-200",
-      error: "inset-ring-error-600 bg-white-200",
-      disabled: "inset-ring-black-500 bg-white-400",
-      complete: "inset-ring-black-600 bg-white-200",
+const inputWrapperVariants = cva(
+  "inset-ring-1 flex items-cente h-7 pc:h-10 py-1 pc:py-2 px-3",
+  {
+    variants: {
+      state: {
+        default: "inset-ring-black-600 bg-white-200",
+        focused: "inset-ring-black-900 bg-white-200",
+        success: "inset-ring-success-700 bg-white-200",
+        error: "inset-ring-error-600 bg-white-200",
+        disabled: "inset-ring-black-500 bg-white-400",
+        complete: "inset-ring-black-600 bg-white-200",
+      },
+    },
+    defaultVariants: {
+      state: "default",
     },
   },
-  defaultVariants: {
-    state: "default",
-  },
-});
+);
 
 const inputVariants = cva(
   "w-full outline-none pc:typo-pc-body-m400 mo:typo-mo-body-m400",
@@ -61,10 +67,10 @@ const inputVariants = cva(
     defaultVariants: {
       state: "default",
     },
-  }
+  },
 );
 
-const dismissCircleVariants = cva("cursor-pointer pc:size-6 mo:size-5", {
+const dismissCircleVariants = cva("cursor-pointer pc:size-6 size-5", {
   variants: {
     state: {
       default: "text-black-600",
@@ -94,19 +100,27 @@ const helperTextVariants = cva(
     defaultVariants: {
       state: "default",
     },
-  }
+  },
 );
 
 export default function TextField({
   id,
-  label = "label",
-  helperText = "helper text",
-  placeholder = "input text",
+  label,
+  helperText,
+  placeholder,
   state = "default",
+  value,
+  setValue,
+  onKeyDown,
+  onFocus,
 }: TextFieldProps) {
   const isDisabled = state === "disabled";
   const [focused, setFocused] = useState(false);
   const finalState = isDisabled ? "disabled" : focused ? "focused" : state;
+
+  const handleClear = () => {
+    setValue("");
+  };
 
   return (
     <div className="flex flex-col gap-2 w-full">
@@ -119,16 +133,27 @@ export default function TextField({
       <div className={inputWrapperVariants({ state: finalState })}>
         <input
           id={id}
+          autoComplete="off"
           type="text"
-          onFocus={() => setFocused(true)}
+          onFocus={() => {
+            setFocused(true);
+            onFocus?.();
+          }}
           onBlur={() => setFocused(false)}
           disabled={isDisabled}
           placeholder={placeholder}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={onKeyDown}
           className={inputVariants({ state: finalState })}
         />
-        <DismissCircle
-          className={dismissCircleVariants({ state: finalState })}
-        />
+        {value && value.length > 0 && (
+          <button onClick={handleClear}>
+            <DismissCircle
+              className={dismissCircleVariants({ state: finalState })}
+            />
+          </button>
+        )}
       </div>
 
       {helperText && (
