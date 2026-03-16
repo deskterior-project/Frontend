@@ -1,3 +1,5 @@
+'use client'
+
 import Dismiss from "@/assets/dismiss-regular.svg";
 import Image from "next/image";
 import { ReactNode, useEffect, useRef, useState } from "react";
@@ -21,13 +23,15 @@ export default function Carousel({
   const isDragging = useRef(false);
   const startX = useRef(0);
 
-  if (!images || images.length === 0) return null;
+ 
 
   useEffect(() => {
     if (images.length > 0 && currentIndex >= images.length) {
       setCurrentIndex(images.length - 1);
     }
   }, [images.length, currentIndex]);
+
+ if (!images || images.length === 0) return null;
 
   const onDragStart = (e: React.MouseEvent | React.TouchEvent) => {
     isDragging.current = true;
