@@ -1,3 +1,4 @@
+
 import BottomNav from "@/components/section/BottomNav";
 import HeaderPc from "@/components/section/HeaderPc";
 import PostCard from "@/components/section/PostCard";
@@ -139,4 +140,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default page
