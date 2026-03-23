@@ -1,3 +1,6 @@
+"use client";
+
+import React from "react";
 import BottomNav from "@/components/section/BottomNav";
 import HeaderPc from "@/components/section/HeaderPc";
 import PostCard from "@/components/section/PostCard";
@@ -78,7 +81,7 @@ const MOCK_POSTS = [
   },
 ];
 
-const page = () => {
+const Page = () => {
   const HOMELIST = [
     "추천 게시물",
     "학생 인기게시물",
@@ -86,10 +89,12 @@ const page = () => {
     "개발자 인기게시물",
     "마케터 인기게시물",
   ];
+
   return (
     <div className="w-full min-h-screen">
       <div className="max-w-[1200px] mx-auto w-full">
         <HeaderPc />
+        {/* 모바일 로고 섹션 */}
         <div className="pc:hidden w-full pl-6 pt-2.5 pb-[11px] flex items-center">
           <div className="relative w-32 h-[35px]">
             <Image
@@ -101,6 +106,8 @@ const page = () => {
             />
           </div>
         </div>
+
+        {/* 메인 배너 이미지 */}
         <div className="relative w-full aspect-375/200 pc:aspect-1200/640">
           <Image
             src="/homeImgSample.png"
@@ -111,64 +118,7 @@ const page = () => {
           />
         </div>
 
-        <div className="flex flex-col gap-10 pc:gap-[120px] mb-12 pc:mt-[120px] mt-10 ml-6 pc:ml-0">
-          {HOMELIST.map((item) => (
-            <div key={item}>
-              <h2 className="typo-mo-title-m700 pc:typo-pc-title-m700 mb-4 pc:mb-6">
-                {item}
-              </h2>
-              <div className="flex overflow-x-auto pc:overflow-x-hidden gap-2 pc:gap-6 no-scrollbar -ml-6 w-[calc(100%+24px)] px-6 pc:ml-0 pc:w-full pc:px-0">
-                {MOCK_POSTS.map((post) => (
-                  <div
-                    key={post.id}
-                    className="shrink-0 pc:w-[calc((100%-48px)/3)]"
-                  >
-                    <PostCard
-                      {...post}
-                      size={item === "추천 게시물" ? "long" : "default"}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-        <BottomNav />
-      </div>
-    </div>
-  );
-  const HOMELIST = [
-    "추천 게시물",
-    "학생 인기게시물",
-    "디자이너 인기게시물",
-    "개발자 인기게시물",
-    "마케터 인기게시물",
-  ];
-  return (
-    <div className="w-full min-h-screen">
-      <div className="max-w-[1200px] mx-auto w-full">
-        <HeaderPc />
-        <div className="pc:hidden w-full pl-6 pt-2.5 pb-[11px] flex items-center">
-          <div className="relative w-32 h-[35px]">
-            <Image
-              src="/logo.svg"
-              alt="logoImg"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
-        </div>
-        <div className="relative w-full aspect-375/200 pc:aspect-1200/640">
-          <Image
-            src="/homeImgSample.png"
-            alt="homeImg"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-
+        {/* 게시물 리스트 섹션 */}
         <div className="flex flex-col gap-10 pc:gap-[120px] mb-12 pc:mt-[120px] mt-10 ml-6 pc:ml-0">
           {HOMELIST.map((item) => (
             <div key={item}>
@@ -197,4 +147,4 @@ const page = () => {
   );
 };
 
-export default page
+export default Page;
