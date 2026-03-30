@@ -22,10 +22,10 @@ const Modal = ({
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-10 bg-black-900/60" />
+        <Dialog.Overlay className="fixed inset-0 z-20 bg-black-900/60" />
         <Dialog.Content
           className={cn(
-            "mo:w-82 pc:w-147 fixed top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2 overflow-hidden bg-white-200",
+            "mo:w-82 pc:w-147 fixed top-1/2 left-1/2 z-30 -translate-x-1/2 -translate-y-1/2 overflow-hidden bg-white-200",
             "mo:px-8 mo:py-6 pc:px-10 pc:py-10",
             "flex flex-col items-center justify-center",
             border && "inset-ring-1 inset-ring-black-90",
