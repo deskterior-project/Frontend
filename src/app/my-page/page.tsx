@@ -9,8 +9,9 @@ import Heart from "@/assets/heart-regular.svg";
 import FillHeart from "@/assets/heart-filled.svg";
 import TextEdit from "@/assets/clipboard-text-edit-regular.svg";
 import FillTextEdit from "@/assets/clipboard-text-edit-filled.svg";
-import { MouseEvent, useState } from "react";
+import { MouseEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import BottomNav from "@/components/section/BottomNav";
 
 const tabs = [
     {
@@ -36,17 +37,17 @@ const userInfo = {
 
 const MyPage = () => {
     const searchParams = useSearchParams();
-    const url = searchParams.get("posts");
+    const currentTab = searchParams.get("posts") || "like";
+    // const url = searchParams.get("posts");
     const router = useRouter();
 
-    const [currentTab, setCurrentTab] = useState<string | null>(url || "like");
+    // const [currentTab, setCurrentTab] = useState<string | null>(url || "like");
 
     const handleTabClick = (
         e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
         id: string
     ) => {
         e.preventDefault();
-        setCurrentTab(id);
         router.push(`/my-page?posts=${id}`);
     };
 
@@ -86,6 +87,7 @@ const MyPage = () => {
                     ))}
                 </div>
             </section>
+            <BottomNav />
         </main>
     );
 };

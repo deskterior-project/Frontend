@@ -90,6 +90,7 @@ const SideBar = ({ isOpen, setIsOpen }: SideBarProps) => {
                             <Link
                                 key={href}
                                 href={href}
+                                onClick={() => setIsOpen(false)}
                                 className="typo-mo-body-l400 hover:bg-black-200 active:bg-black-200 px-1 py-2 text-start"
                             >
                                 {label}
