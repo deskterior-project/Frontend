@@ -1,12 +1,11 @@
 import { cn } from "@/hooks/cn";
 import { cva, VariantProps } from "class-variance-authority";
+import Link from "next/link";
+import { ComponentProps } from "react";
 
-interface BasicButtonProps
-  extends
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof basicButtonVariants> {
-  children: React.ReactNode;
-}
+type ButtonVariant = VariantProps<typeof basicButtonVariants>;
+type BasicButtonProps = ButtonVariant &
+  (React.ButtonHTMLAttributes<HTMLButtonElement> | ComponentProps<typeof Link>);
 
 const basicButtonVariants = cva(
   "flex items-center justify-center gap-1 cursor-pointer",
@@ -47,6 +46,16 @@ const BasicButton = ({
   className,
   ...props
 }: BasicButtonProps) => {
+  if ("href" in props) {
+    return (
+      <Link
+        {...props}
+        className={cn(basicButtonVariants({ variant, size }), className)}
+      >
+        {children}
+      </Link>
+    );
+  }
   return (
     <button
       {...props}

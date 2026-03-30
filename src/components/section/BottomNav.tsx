@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import HomeIcon from "@/assets/home-regular.svg";
 import HomeFilledIcon from "@/assets/home-filled.svg";
 import AppListIcon from "@/assets/apps-list-regular.svg";
@@ -11,56 +11,70 @@ import PenIcon from "@/assets/pen-regular.svg";
 import PenFilledIcon from "@/assets/pen-filled.svg";
 import PersonIcon from "@/assets/person-circle-regular.svg";
 import PersonFilledIcon from "@/assets/person-circle-filled.svg";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import SideBar from "../ui/SideBar/SideBar";
 
 const BottomNav = () => {
-  const pathname = usePathname();
+    const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
+    const route = useRouter();
+    const navItems = [
+        {
+            path: "/",
+            onClick: () => route.push("/"),
+            Regular: HomeIcon,
+            Filled: HomeFilledIcon,
+            label: "홈",
+        },
+        {
+            path: "/post-list",
+            onClick: () => route.push("/post-list"),
+            Regular: AppListIcon,
+            Filled: AppListFilledIcon,
+        },
+        {
+            path: "/search",
+            onClick: () => route.push("/search"),
+            Regular: SearchIcon,
+            Filled: SearchFilledIcon,
+        },
+        {
+            path: "/posts/upload",
+            onClick: () => route.push("/posts/upload"),
+            Regular: PenIcon,
+            Filled: PenFilledIcon,
+        },
+        {
+            path: "/my-page",
+            onClick: () => setIsOpen(!isOpen),
+            Regular: PersonIcon,
+            Filled: PersonFilledIcon,
+        },
+    ];
+    return (
+        <>
+            <nav className="pc:hidden border-black-900 fixed right-0 bottom-0 left-0 z-100 h-11 border-t bg-white">
+                <ul className="flex h-full items-center justify-around">
+                    {navItems.map((item) => {
+                        const isActive = pathname === item.path;
+                        const Icon = isActive ? item.Filled : item.Regular;
 
-  const navItems = [
-    { path: "/", Regular: HomeIcon, Filled: HomeFilledIcon, label: "홈" },
-    {
-      path: "/post-list",
-      Regular: AppListIcon,
-      Filled: AppListFilledIcon,
-    },
-    {
-      path: "/search",
-      Regular: SearchIcon,
-      Filled: SearchFilledIcon,
-    },
-    {
-      path: "/write",
-      Regular: PenIcon,
-      Filled: PenFilledIcon,
-    },
-    {
-      path: "/mypage",
-      Regular: PersonIcon,
-      Filled: PersonFilledIcon,
-    },
-  ];
-  return (
-    <nav className="fixed bottom-0 left-0 right-0 h-11 border-t z-50 border-black-900 bg-white">
-      <ul className="flex h-full items-center justify-around">
-        {navItems.map((item) => {
-          const isActive = pathname === item.path;
-          const Icon = isActive ? item.Filled : item.Regular;
-
-          return (
-            <li key={item.path} className="flex-1">
-              <Link
-                href={item.path}
-                className="flex flex-col items-center gap-1"
-              >
-                <Icon className="w-6 h-6" />
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
-  );
+                        return (
+                            <li key={item.path}>
+                                <button
+                                    onClick={item.onClick}
+                                    className="flex cursor-pointer flex-col items-center gap-1"
+                                >
+                                    <Icon className="h-6 w-6" />
+                                </button>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </nav>
+            <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
+        </>
+    );
 };
 
 export default BottomNav;
