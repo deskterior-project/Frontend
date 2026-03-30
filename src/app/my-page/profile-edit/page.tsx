@@ -7,6 +7,7 @@ import RadioButton from "@/components/ui/Button/RadioButton";
 import HeaderMo from "@/components/ui/Header/HeaderMo";
 import TextField from "@/components/ui/TextField/TextField";
 import BasicButton from "@/components/ui/Button/BasicButton";
+import BottomNav from "@/components/section/BottomNav";
 
 const ProfileEditPage = () => {
     const [nickName, setNickName] = useState("");
@@ -108,6 +109,7 @@ const ProfileEditPage = () => {
                     </BasicButton>
                 </div>
             </section>
+            <BottomNav />
         </main>
     );
 };
