@@ -8,11 +8,10 @@ import { useEffect, useRef, useState } from "react";
 
 export interface ProductItem {
     id: string | number;
-    name: string;
-    url: string;
-    image?: string;
+    productName: string;
+    productLink: string;
+    favicon?: string;
 }
-
 interface DropdownProps {
     items: ProductItem[];
     className?: string;
@@ -70,14 +69,14 @@ const Dropdown = ({ items = [], className }: DropdownProps) => {
             >
                 <div
                     className="flex h-full flex-1 cursor-pointer items-center gap-2 overflow-hidden text-left"
-                    onClick={() => handleLinkOpen(displayItem.url)}
+                    onClick={() => handleLinkOpen(displayItem.productLink)}
                 >
-                    {displayItem.image && (
+                    {displayItem.favicon && (
                         <div className="inset-ring-black-900 flex h-10 w-10 shrink-0 items-center justify-center inset-ring-1">
                             <Image
-                                src={displayItem.image}
+                                src={displayItem.favicon}
                                 className="h-full w-full object-contain"
-                                alt={displayItem.name}
+                                alt={displayItem.productName}
                                 width={40}
                                 height={40}
                             />
@@ -85,10 +84,10 @@ const Dropdown = ({ items = [], className }: DropdownProps) => {
                     )}
                     <div className="flex flex-col gap-1 overflow-hidden">
                         <span className="typo-mo-body-s400 text-black-900 truncate">
-                            {displayItem.name}
+                            {displayItem.productName}
                         </span>
                         <span className="typo-mo-body-s400 text-black-600 truncate">
-                            {displayItem.url}
+                            {displayItem.productLink}
                         </span>
                     </div>
                 </div>
@@ -121,16 +120,16 @@ const Dropdown = ({ items = [], className }: DropdownProps) => {
                     {items.map((item, index) => (
                         <li
                             key={item.id}
-                            onClick={() => handleLinkOpen(item.url)}
+                            onClick={() => handleLinkOpen(item.productLink)}
                             className={cn(
                                 "flex cursor-pointer items-center gap-2 p-3 transition-colors"
                             )}
                         >
-                            {item.image && (
+                            {item.favicon && (
                                 <div className="inset-ring-black-900 flex h-10 w-10 shrink-0 items-center justify-center bg-white inset-ring-1">
                                     <Image
-                                        src={item.image}
-                                        alt={item.name}
+                                        src={item.favicon}
+                                        alt={item.productName}
                                         width={40}
                                         height={40}
                                         className="h-full w-full object-contain"
@@ -139,10 +138,10 @@ const Dropdown = ({ items = [], className }: DropdownProps) => {
                             )}
                             <div className="flex flex-col gap-1 overflow-hidden text-left">
                                 <span className="typo-mo-body-s400 text-black-900">
-                                    {item.name}
+                                    {item.productName}
                                 </span>
                                 <span className="typo-mo-body-s400 text-black-600 truncate">
-                                    {item.url}
+                                    {item.productLink}
                                 </span>
                             </div>
                         </li>
