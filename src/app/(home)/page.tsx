@@ -5,6 +5,7 @@ import BottomNav from "@/components/section/BottomNav";
 import HeaderPc from "@/components/section/HeaderPc";
 import PostCard from "@/components/section/PostCard";
 import Image from "next/image";
+import { useAuthGuard } from "@/hooks/useAuthGuard";
 
 const MOCK_POSTS = [
   {
@@ -89,12 +90,19 @@ const Page = () => {
     "개발자 인기게시물",
     "마케터 인기게시물",
   ];
+  const { checkAuth } = useAuthGuard()
+
+  const handleLikeClick = (postId: number, nextState: boolean) => {
+    console.log(`포스트 ${postId}의 좋아요 상태를 ${nextState}로 변경 시도`);
+    // 실제 Supabase 연동 시: await supabase.from('likes').insert(...) 등
+  };
+  
 
   return (
     <div className="w-full min-h-screen">
       <div className="max-w-[1200px] mx-auto w-full">
         <HeaderPc />
-        {/* 모바일 로고 섹션 */}
+        
         <div className="pc:hidden w-full pl-6 pt-2.5 pb-[11px] flex items-center">
           <div className="relative w-32 h-[35px]">
             <Image
@@ -107,7 +115,6 @@ const Page = () => {
           </div>
         </div>
 
-        {/* 메인 배너 이미지 */}
         <div className="relative w-full aspect-375/200 pc:aspect-1200/640">
           <Image
             src="/homeImgSample.png"
@@ -118,7 +125,6 @@ const Page = () => {
           />
         </div>
 
-        {/* 게시물 리스트 섹션 */}
         <div className="flex flex-col gap-10 pc:gap-[120px] mb-12 pc:mt-[120px] mt-10 ml-6 pc:ml-0">
           {HOMELIST.map((item) => (
             <div key={item}>
@@ -134,7 +140,12 @@ const Page = () => {
                     <PostCard
                       {...post}
                       size={item === "추천 게시물" ? "long" : "default"}
+                      isblack={post.isblack}
+                      onLikeClick={(nextState) => 
+                          checkAuth(() => handleLikeClick(post.id, nextState))
+                        }
                     />
+                    
                   </div>
                 ))}
               </div>

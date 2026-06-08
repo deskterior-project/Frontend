@@ -31,7 +31,6 @@ const BottomNav = () => {
   const handleNavClick = (e: React.MouseEvent, item: typeof navItems[0]) => {
     if (item.auth) {
       e.preventDefault(); // Link의 기본 이동 동작을 막음
-      
       checkAuth(() => {
         router.push(item.path);
       });
