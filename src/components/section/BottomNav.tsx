@@ -12,12 +12,14 @@ import PenFilledIcon from "@/assets/pen-filled.svg";
 import PersonIcon from "@/assets/person-circle-regular.svg";
 import PersonFilledIcon from "@/assets/person-circle-filled.svg";
 import { usePathname, useRouter } from "next/navigation";
+import { useAuthGuard } from "@/hooks/useAuthGuard";
 import SideBar from "../ui/SideBar/SideBar";
 
 const BottomNav = () => {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
     const route = useRouter();
+    const { checkAuth } = useAuthGuard();
     const navItems = [
         {
             path: "/",
@@ -40,13 +42,13 @@ const BottomNav = () => {
         },
         {
             path: "/posts/upload",
-            onClick: () => route.push("/posts/upload"),
+            onClick: () => checkAuth(() => route.push("/posts/upload")),
             Regular: PenIcon,
             Filled: PenFilledIcon,
         },
         {
             path: "/my-page",
-            onClick: () => setIsOpen(!isOpen),
+            onClick: () => checkAuth(() => setIsOpen(!isOpen)),
             Regular: PersonIcon,
             Filled: PersonFilledIcon,
         },

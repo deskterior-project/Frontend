@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import HeaderPc from "@/components/section/HeaderPc";
+import { useAuthGuard } from "@/hooks/useAuthGuard";
 
 const MOCK_POSTS = [
   {
@@ -87,11 +88,16 @@ const MOCK_POSTS = [
 
 const page = () => {
   const router = useRouter();
+  const { checkAuth } = useAuthGuard()
   const [selectedCategory, setSelectedCategory] = useState("전체");
 
   const handleGoToWrite = () => {
-    // 로그인 조건문 추가
     router.push("/write");
+  };
+
+  const handleLikeClick = (postId: number, nextState: boolean) => {
+    console.log(`포스트 ${postId}의 좋아요 상태를 ${nextState}로 변경 시도`);
+    // 실제 Supabase 연동 시: await supabase.from('likes').insert(...) 등
   };
 
   const filteredBestPosts =
@@ -142,7 +148,7 @@ const page = () => {
                 </span>
               </div>
               <BasicButton
-                onClick={handleGoToWrite}
+                onClick={() => checkAuth(handleGoToWrite)}
                 variant="primary"
                 size="large"
                 className="h-8 py-1 px-3 flex justify-center items-center"
@@ -171,6 +177,9 @@ const page = () => {
                       thumbnail={post.thumbnail}
                       isblack={post.isblack}
                       title={post.title}
+                      onLikeClick={(nextState) => 
+                        checkAuth(() => handleLikeClick(post.id, nextState))
+                      }
                     />
                   </div>
                 ))}
@@ -190,6 +199,9 @@ const page = () => {
                     thumbnail={post.thumbnail}
                     isblack={post.isblack}
                     title={post.title}
+                    onLikeClick={(nextState) => 
+                        checkAuth(() => handleLikeClick(post.id, nextState))
+                      }
                   />
                 ))}
               </div>
