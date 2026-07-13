@@ -1,12 +1,15 @@
 "use client";
-import { socialAuthOptions } from "@/constants/socialAuthOptions";
+import {
+  socialAuthOptions,
+  type SocialAuthOption,
+} from "@/constants/socialAuthOptions";
 import { cn } from "@/hooks/cn";
 import Image from "next/image";
 
 interface SocialAuthSectionProps {
   className?: string;
   mode: "sign-in" | "sign-up";
-  onClick?: (name: string) => void;
+  onClick?: (option: SocialAuthOption) => void;
 }
 
 const title = {
@@ -19,9 +22,9 @@ const SocialAuthSection = ({
   mode,
   onClick,
 }: SocialAuthSectionProps) => {
-  const onClickHandler = (name: string) => {
+  const onClickHandler = (option: SocialAuthOption) => {
     if (onClick) {
-      onClick(name);
+      onClick(option);
     }
   };
 
@@ -40,7 +43,7 @@ const SocialAuthSection = ({
           return (
             <button
               key={option.id}
-              onClick={() => onClickHandler(option.name)}
+              onClick={() => onClickHandler(option)}
               className="flex items-center justify-center cursor-pointer"
             >
               <div className="size-10 pc:size-14">
