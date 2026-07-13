@@ -10,6 +10,7 @@ import XIcon from "@/assets/dismiss-regular.svg";
 import PenIcon from "@/assets/edit-regular.svg";
 import PersonIcon from "@/assets/person-regular.svg";
 import { useRecentSearches } from "@/hooks/useRecentSearches";
+import { useAuthStore } from "@/store/authStore";
 import BasicButton from "../ui/Button/BasicButton";
 
 interface HeaderPcProps {
@@ -34,7 +35,7 @@ const HeaderPc = ({
   const [searchValue, setSearchValue] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = useAuthStore((s) => !!s.user);
 
   const { recent, saveSearch, removeSearch, clearAll } = useRecentSearches();
 
@@ -188,14 +189,16 @@ const HeaderPc = ({
                     <PenIcon className="size-5" />
                   </BasicButton>
                 </Link>
-                <BasicButton
-                  variant="secondary"
-                  size="small"
-                  className="pc:px-2 pc:py-[9px]"
-                  onClick={onProfileOpen}
-                >
-                  <PersonIcon className="size-5" />
-                </BasicButton>
+                <Link href="/my-page">
+                  <BasicButton
+                    variant="secondary"
+                    size="small"
+                    className="pc:px-2 pc:py-[9px]"
+                    onClick={onProfileOpen}
+                  >
+                    <PersonIcon className="size-5" />
+                  </BasicButton>
+                </Link>
               </>
             )}
           </div>
