@@ -9,9 +9,11 @@ import Heart from "@/assets/heart-regular.svg";
 import FillHeart from "@/assets/heart-filled.svg";
 import TextEdit from "@/assets/clipboard-text-edit-regular.svg";
 import FillTextEdit from "@/assets/clipboard-text-edit-filled.svg";
-import { MouseEvent } from "react";
+import { MouseEvent, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import BottomNav from "@/components/section/BottomNav";
+import { useAuthStore } from "@/store/authStore";
+import { signOut } from "@/services/auth";
 
 const tabs = [
     {
@@ -28,20 +30,38 @@ const tabs = [
     },
 ];
 
-const userInfo = {
-    profileImageUrl: "/image.png",
-    nickname: "nickname",
-    following: 999,
-    followers: 999,
-};
-
 const MyPage = () => {
     const searchParams = useSearchParams();
     const currentTab = searchParams.get("posts") || "like";
-    // const url = searchParams.get("posts");
     const router = useRouter();
 
-    // const [currentTab, setCurrentTab] = useState<string | null>(url || "like");
+    const user = useAuthStore((s) => s.user);
+    const isReady = useAuthStore((s) => s.isReady);
+
+    useEffect(() => {
+        if (isReady && !user) {
+            router.replace("/sign-in");
+        }
+    }, [isReady, user, router]);
+
+    if (!isReady || !user) {
+        return null;
+    }
+
+    const userInfo = {
+        profileImageUrl:
+            user.user_metadata?.avatar_url ??
+            user.user_metadata?.picture ??
+            "/image.png",
+        nickname:
+            user.user_metadata?.nickname ??
+            user.user_metadata?.name ??
+            user.user_metadata?.full_name ??
+            user.email ??
+            "사용자",
+        following: 0,
+        followers: 0,
+    };
 
     const handleTabClick = (
         e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
@@ -49,6 +69,11 @@ const MyPage = () => {
     ) => {
         e.preventDefault();
         router.push(`/my-page?posts=${id}`);
+    };
+
+    const handleLogout = async () => {
+        await signOut();
+        router.replace("/");
     };
 
     return (
@@ -65,7 +90,11 @@ const MyPage = () => {
                         프로필 수정
                         <Edit className="size-4" />
                     </BasicButton>
-                    <BasicButton variant="tertiary" size="small">
+                    <BasicButton
+                        variant="tertiary"
+                        size="small"
+                        onClick={handleLogout}
+                    >
                         로그아웃
                         <Logout className="size-4" />
                     </BasicButton>

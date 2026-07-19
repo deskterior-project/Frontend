@@ -1,6 +1,7 @@
 import { suit } from "@/assets/fonts/fonts";
 import AlertToast from "@/components/ui/AlertToast/AlertToast";
 import AlertModal from "@/components/ui/Modal/AlertModal/AlertModal";
+import AuthProvider from "@/providers/AuthProvider";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 
@@ -31,7 +32,7 @@ export default function RootLayout({
     return (
         <html lang="ko" className={suit.variable}>
             <body className={suit.className}>
-                {children}
+                <AuthProvider>{children}</AuthProvider>
                 <AlertModal />
                 <AlertToast />
             </body>

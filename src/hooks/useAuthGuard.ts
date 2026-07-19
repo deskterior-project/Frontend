@@ -1,10 +1,12 @@
-import { useAlertModal } from "@/store/alertModalStore";
 import { useRouter } from "next/navigation";
+
+import { useAlertModal } from "@/store/alertModalStore";
+import { useAuthStore } from "@/store/authStore";
 
 export const useAuthGuard = () => {
   const { clearAlertModal, alertModal } = useAlertModal();
   const router = useRouter();
-  const isLoggedIn = false; // 후에 로그인 상태 확인 로직으로 대체
+  const isLoggedIn = useAuthStore((s) => !!s.user);
 
   const checkAuth = (callback: () => void) => {
     if (!isLoggedIn) {

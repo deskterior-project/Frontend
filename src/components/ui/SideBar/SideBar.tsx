@@ -4,7 +4,10 @@ import Profile from "@/components/section/my-page/Profile";
 import { cn } from "@/hooks/cn";
 import Logout from "@/assets/sign-out-regular.svg";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { signOut } from "@/services/auth";
+import { useAuthStore } from "@/store/authStore";
 
 interface SideBarProps {
     isOpen: boolean;
@@ -26,18 +29,28 @@ const COLOR_BG_CLASS = [
     { color: "pink", bgClass: "bg-bg-pink" },
 ];
 
-const userInfo = {
-    profileImageUrl: "/image.png",
-    nickname: "nickname",
-    following: 999,
-    followers: 999,
-};
-
 const Divider = () => <div className="bg-black-500 mt-8 mb-4 h-px w-full" />;
 
 const SideBar = ({ isOpen, setIsOpen }: SideBarProps) => {
     const [currentColor, setCurrentColor] = useState<BackgroundColor>("white");
     const navigationRef = useRef<HTMLElement>(null);
+    const router = useRouter();
+    const user = useAuthStore((s) => s.user);
+
+    const userInfo = {
+        profileImageUrl:
+            user?.user_metadata?.avatar_url ??
+            user?.user_metadata?.picture ??
+            "/image.png",
+        nickname:
+            user?.user_metadata?.nickname ??
+            user?.user_metadata?.name ??
+            user?.user_metadata?.full_name ??
+            user?.email ??
+            "사용자",
+        following: 0,
+        followers: 0,
+    };
 
     const handleOutsideClose = useCallback(
         (e: MouseEvent) => {
@@ -65,7 +78,11 @@ const SideBar = ({ isOpen, setIsOpen }: SideBarProps) => {
         };
     }, [isOpen, handleOutsideClose]);
 
-    const handleLogOutClick = () => {};
+    const handleLogOutClick = async () => {
+        await signOut();
+        setIsOpen(false);
+        router.replace("/");
+    };
 
     return (
         <>
